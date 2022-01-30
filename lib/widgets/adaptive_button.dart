@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class AdaptiveButton extends StatelessWidget {
   final String text;
-  final handler;
-  AdaptiveButton(this.text, this.handler);
+  final  handler;
+  const AdaptiveButton(this.text, this.handler);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class AdaptiveButton extends StatelessWidget {
         ? CupertinoButton(
             child: Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             onPressed: handler)
         : TextButton(
@@ -23,7 +23,7 @@ class AdaptiveButton extends StatelessWidget {
             onPressed: handler,
             child: Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           );
   }

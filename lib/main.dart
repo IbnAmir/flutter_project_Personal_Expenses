@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/preferred_size.dart';
 
 import './widgets/chart.dart';
 import './widgets/transaction_list.dart';
@@ -36,13 +35,13 @@ class _MyAppState extends State<MyApp> {
           accentColor: Colors.lightBlue[900],
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
-              subtitle1: TextStyle(
+              subtitle1: const TextStyle(
                   fontFamily: 'OpenSans',
                   fontWeight: FontWeight.bold,
                   fontSize: 18)),
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
-                subtitle1: TextStyle(fontFamily: 'OpenSans', fontSize: 20)),
+                subtitle1: const TextStyle(fontFamily: 'OpenSans', fontSize: 20)),
           )),
       home: MyHomePage(),
     );
@@ -74,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
       return tx.date.isAfter(
-        DateTime.now().subtract(Duration(days: 7)),
+        DateTime.now().subtract(const Duration(days: 7)),
       );
     }).toList();
   }
@@ -118,12 +117,12 @@ class _MyHomePageState extends State<MyHomePage> {
     final PreferredSizeWidget appBar;
     if (Platform.isIOS) {
       appBar = CupertinoNavigationBar(
-        middle: Text('Personal Expenses'),
+        middle: const Text('Personal Expenses'),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             GestureDetector(
-              child: Icon(CupertinoIcons.add),
+              child: const Icon(CupertinoIcons.add),
               onTap: () => _startAddNewTransaction(context),
             )
           ],
@@ -131,11 +130,11 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     } else {
       appBar = AppBar(
-        title: Text('Personal Expenses'),
+        title: const Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
               onPressed: () => _startAddNewTransaction(context),
-              icon: Icon(Icons.add)),
+              icon: const Icon(Icons.add)),
         ],
       );
     }
@@ -212,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
             floatingActionButton: Platform.isIOS
                 ? Container()
                 : FloatingActionButton(
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                     onPressed: () => _startAddNewTransaction(context),
                   ),
           );

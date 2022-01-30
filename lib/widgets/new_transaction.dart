@@ -1,6 +1,4 @@
-import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './adaptive_button.dart';
 import 'package:intl/intl.dart';
@@ -65,13 +63,13 @@ class _NewTransactionState extends State<NewTransaction> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               TextField(
-                decoration: InputDecoration(labelText: 'Title'),
+                decoration: const InputDecoration(labelText: 'Title'),
                 // onChanged: (val) {titleInput = val;},
                 controller: _titleInputController,
                 onSubmitted: (_) => _submitData(),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Amount'),
+                decoration: const InputDecoration(labelText: 'Amount'),
                 controller: _amountInputController,
                 keyboardType: TextInputType.number,
                 onSubmitted: (_) => _submitData(),
@@ -91,10 +89,10 @@ class _NewTransactionState extends State<NewTransaction> {
                   ],
                 ),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: _submitData,
-                color: Theme.of(context).primaryColor,
-                child: Text(
+                // color: Theme.of(context).primaryColor,
+                child: const Text(
                   'Add Transaction',
                   style: TextStyle(color: Colors.white),
                 ),
