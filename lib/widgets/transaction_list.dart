@@ -29,52 +29,59 @@ class TransactionList extends StatelessWidget {
               ],
             );
           })
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              // return Card(
-              //   child: Row(
-              //     children: <Widget>[
-              //       Container(
-              //         child: Text(
-              //           '\$${transaction[index].amount.toStringAsFixed(2)}',
-              //           // tx.amount.toString(),
-              //           style: TextStyle(
-              //             fontWeight: FontWeight.bold,
-              //             fontSize: 20,
-              //             color: Colors.teal,
-              //           ),
-              //         ),
-              //         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              //         decoration: BoxDecoration(
-              //           border: Border.all(
-              //             width: 2,
-              //             color: Colors.teal,
-              //           ),
-              //         ),
-              //         padding: EdgeInsets.all(10),
-              //       ),
-              //       Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: <Widget>[
-              //           Text(
-              //             transaction[index].title,
-              //             style: Theme.of(context).textTheme.subtitle1,
-              //
-              //           ),
-              //           Text(DateFormat.yMMMd().format(transaction[index].date),
-              //               style: TextStyle(
-              //                 color: Colors.grey,
-              //                 fontWeight: FontWeight.bold,
-              //                 fontSize: 14,
-              //               )),
-              //         ],
-              //       )
-              //     ],
-              //   ),
-              // );
-              return TransactionItem(transaction: transaction[index], deleteTx: deleteTx,);
-            },
-            itemCount: transaction.length,
+        : ListView(children:
+          transaction.map((tx) =>  TransactionItem(
+              key: ValueKey(tx.id),
+              transaction: tx,
+              deleteTx: deleteTx
+          )).toList()
           );
+            // ListView.builder(
+            // itemBuilder: (ctx, index) {
+            //   // return Card(
+            //   //   child: Row(
+            //   //     children: <Widget>[
+            //   //       Container(
+            //   //         child: Text(
+            //   //           '\$${transaction[index].amount.toStringAsFixed(2)}',
+            //   //           // tx.amount.toString(),
+            //   //           style: TextStyle(
+            //   //             fontWeight: FontWeight.bold,
+            //   //             fontSize: 20,
+            //   //             color: Colors.teal,
+            //   //           ),
+            //   //         ),
+            //   //         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            //   //         decoration: BoxDecoration(
+            //   //           border: Border.all(
+            //   //             width: 2,
+            //   //             color: Colors.teal,
+            //   //           ),
+            //   //         ),
+            //   //         padding: EdgeInsets.all(10),
+            //   //       ),
+            //   //       Column(
+            //   //         crossAxisAlignment: CrossAxisAlignment.start,
+            //   //         children: <Widget>[
+            //   //           Text(
+            //   //             transaction[index].title,
+            //   //             style: Theme.of(context).textTheme.subtitle1,
+            //   //
+            //   //           ),
+            //   //           Text(DateFormat.yMMMd().format(transaction[index].date),
+            //   //               style: TextStyle(
+            //   //                 color: Colors.grey,
+            //   //                 fontWeight: FontWeight.bold,
+            //   //                 fontSize: 14,
+            //   //               )),
+            //   //         ],
+            //   //       )
+            //   //     ],
+            //   //   ),
+            //   // );
+            //   return TransactionItem(transaction: transaction[index], deleteTx: deleteTx,);
+            }
+          //   itemCount: transaction.length,
+          // );
   }
-}
+// }
